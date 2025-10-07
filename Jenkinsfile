@@ -28,16 +28,17 @@ stages {
 }
 
    
-//    stage ("push  image")
-//   {
-//      steps {
-//        sh """
-//          docker login -u moatazxz    -p 
-//        """
-       
-//      }
+   stage ("push  image")
+  {
+     steps    {
+        withCredentials([usernamePassword(credentialsId: 'dokcer-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+       sh """
+         docker login -u $DOCKER_USER   -p $DOCKER_PASS
+       """
+        }
+     }
 
-// }
+}
 
 
 
