@@ -6,15 +6,37 @@ stages {
      steps {
        sh """
          
-       
+       echo "login to dockerhbub"
        """
        
      }
 
 }
- 
 
+   stage ("build docker")
+  {
+     steps {
+       sh """
+         
+       echo "buid your Image"
+       """
+       
+     }
 
+}
+
+   
+   stage ("deploy docker")
+  {
+     steps {
+       sh """
+         
+       echo "deploy"
+       """
+       
+     }
+
+}
 
 
 
