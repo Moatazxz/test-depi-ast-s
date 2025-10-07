@@ -1,5 +1,9 @@
 pipeline{
 agent any
+
+tools{
+   nodeJs 'node24.9.0'
+}
 stages {
    stage ("login to docker hub")
   {
