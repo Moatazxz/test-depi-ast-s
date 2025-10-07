@@ -5,7 +5,7 @@ tools{
    nodejs 'node24.9.0'
 }
 stages {
-   stage ("login to docker hub")
+   stage ("npm buils stage")
   {
      steps {
        sh """
