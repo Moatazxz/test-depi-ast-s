@@ -20,8 +20,7 @@ stages {
   {
      steps {
        sh """
-         
-       echo "buid your Image"
+         docker build docker.io/moatazxz/ast-test1:v1
        """
        
      }
@@ -29,17 +28,16 @@ stages {
 }
 
    
-   stage ("deploy docker")
-  {
-     steps {
-       sh """
-         
-       echo "deploy"
-       """
+//    stage ("push  image")
+//   {
+//      steps {
+//        sh """
+//          docker login -u moatazxz    -p 
+//        """
        
-     }
+//      }
 
-}
+// }
 
 
 
