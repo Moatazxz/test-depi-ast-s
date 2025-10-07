@@ -5,8 +5,7 @@ stages {
   {
      steps {
        sh """
-         
-       echo "login to dockerhbub"
+          npm -v
        """
        
      }
