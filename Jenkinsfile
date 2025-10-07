@@ -20,7 +20,7 @@ stages {
   {
      steps {
        sh """
-         docker build docker.io/moatazxz/ast-test1:v1
+         docker build docker.io/moatazxz/ast-test1:v1 .
        """
        
      }
