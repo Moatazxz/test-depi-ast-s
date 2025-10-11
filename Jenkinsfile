@@ -44,16 +44,17 @@ stages {
    stage ("Deploy")
   {
      steps    {
+
+         withCredentials([usernamePassword(credentialsId: 'dokcer_cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {    
           sshagent(credentials: ['deploy-key']) {
        sh """
               ssh -o StrictHostKeyChecking=no ubuntu@54.163.219.186  '
-                  
-                  docker rmi docker.io/moatazxz/ast-test1:v1
-                  docker rm -f myapp
+                  docker login -u $DOCKER_USER   -p $DOCKER_PASS
                   docker run --name myapp -p 80:80 -d docker.io/moatazxz/ast-test1:v1
               '
        """
         }
+         }
      }
 
 }
