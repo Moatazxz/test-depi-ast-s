@@ -1,6 +1,13 @@
 pipeline{
 agent any
 
+
+enviroments {
+    rig_url= "docker.io/moatazxz"
+    app_name= "ast-test1"
+
+       
+}
 // tools{
 //    nodejs 'node24.9.0'
 // }
@@ -17,10 +24,13 @@ stages {
 // }
 
    stage ("build docker")
+       when {    
+          branch 'main'
+       }
   {
      steps {
        sh """
-         docker build -t docker.io/moatazxz/ast-test1:v1 .
+         docker build -t ${rig_url}/${app_name}:${BUILD_NUMBER} .
        """
        
      }
@@ -29,6 +39,10 @@ stages {
 
    
    stage ("push  image")
+   when {    
+          branch 'main'
+       }
+       
   {
      steps    {
         withCredentials([usernamePassword(credentialsId: 'dokcer_cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
@@ -43,6 +57,11 @@ stages {
 
    stage ("Deploy")
   {
+
+ when {    
+          branch 'test'
+       }
+         
      steps    {
 
          withCredentials([usernamePassword(credentialsId: 'dokcer_cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {    
@@ -62,6 +81,19 @@ stages {
 
   
 }
+
+
+
+
+// Variable	Description
+// BUILD_NUMBER	Current build number
+// BUILD_ID	Unique build ID
+// JOB_NAME	Name of the job
+// BUILD_URL	URL of the build
+// GIT_COMMIT	Git commit hash (if applicable)
+// GIT_BRANCH	Git branch name
+// WORKSPACE	Job workspace directory
+       
 
 
 
