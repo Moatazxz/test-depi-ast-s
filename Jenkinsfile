@@ -31,7 +31,7 @@ stages {
    stage ("push  image")
   {
      steps    {
-        withCredentials([usernamePassword(credentialsId: 'dokcer-cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        withCredentials([usernamePassword(credentialsId: 'dokcer_cred', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
        sh """
          docker login -u $DOCKER_USER   -p $DOCKER_PASS
          docker push docker.io/moatazxz/ast-test1:v1
