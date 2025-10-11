@@ -47,8 +47,8 @@ stages {
           sshagent(credentials: ['deploy-key']) {
        sh """
               ssh -o StrictHostKeyChecking=no ubuntu@54.163.219.186  '
-                  docker ps -a
-                  docker run -p 80:80 -d docker.io/moatazxz/ast-test1:v1
+                  docker rm  -f $(docker ps -aq)
+                  docker run --name myapp -p 80:80 -d docker.io/moatazxz/ast-test1:v1
               '
        """
         }
