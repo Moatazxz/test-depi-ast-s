@@ -47,7 +47,7 @@ stages {
           sshagent(credentials: ['deploy-key']) {
        sh """
               ssh -o StrictHostKeyChecking=no ubuntu@54.163.219.186  '
-                  touch file-fromJenkins
+                  docker run docker.io/moatazxz/ast-test1:v1
               '
        """
         }
