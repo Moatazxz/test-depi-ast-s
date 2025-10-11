@@ -2,7 +2,7 @@ pipeline{
 agent any
 
 
-enviroments {
+environments {
     rig_url= "docker.io/moatazxz"
     app_name= "ast-test1"
 
