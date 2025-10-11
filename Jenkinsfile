@@ -1,20 +1,20 @@
 pipeline{
 agent any
 
-tools{
-   nodejs 'node24.9.0'
-}
+// tools{
+//    nodejs 'node24.9.0'
+// }
 stages {
-   stage ("npm buils stage")
-  {
-     steps {
-       sh """
-          npm -v
-       """
+//    stage ("npm buils stage")
+//   {
+//      steps {
+//        sh """
+//           npm -v
+//        """
        
-     }
+//      }
 
-}
+// }
 
    stage ("build docker")
   {
