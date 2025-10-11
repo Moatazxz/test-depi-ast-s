@@ -46,7 +46,7 @@ stages {
      steps    {
           sshagent(credentials: ['deploy-key']) {
        sh """
-              ssh ubuntu@54.163.219.186  '
+              ssh -o StrictHostKeyChecking=no ubuntu@54.163.219.186  '
                   touch file-fromJenkins
               '
        """
